@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ameer Hamza — Senior Android Developer</title>
+  <meta name="description" content="Portfolio of Ameer Hamza, Senior Android Application Developer based in Lahore, Pakistan with 6+ years crafting user-first mobile experiences.">
+
+  <!-- Google Fonts: Space Grotesk & DM Serif Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-surface: #f7f6f3;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f0eee9;
+      --text-main: #0e0e0e;
+      --text-muted: #5e5e5e;
+      --border-color: #e2dfd7;
+      --accent-blue: #1a4dcc;
+      --accent-blue-hover: #133aa0;
+      --badge-green-bg: #e6f5ef;
+      --badge-green-text: #0f7a55;
+      --badge-green-dot: #0f7a55;
+      --badge-muted-bg: #eae7df;
+      --badge-muted-text: #4a4a4a;
+      --tag-hover-bg: #eaf0fc;
+      --tag-hover-border: #1a4dcc;
+      --dark-strip-bg: #0e0e0e;
+      --dark-strip-text: #ffffff;
+      --dark-strip-muted: #999999;
+      --dark-strip-border: #222222;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-surface: #121212;
+        --bg-card: #1c1c1c;
+        --bg-card-subtle: #242424;
+        --text-main: #f5f5f5;
+        --text-muted: #a3a3a3;
+        --border-color: #2e2e2e;
+        --accent-blue: #4d7dff;
+        --accent-blue-hover: #6e94ff;
+        --badge-green-bg: #12281e;
+        --badge-green-text: #34d399;
+        --badge-green-dot: #34d399;
+        --badge-muted-bg: #2a2a2a;
+        --badge-muted-text: #cccccc;
+        --tag-hover-bg: #1e2638;
+        --tag-hover-border: #4d7dff;
+        --dark-strip-bg: #0a0a0a;
+        --dark-strip-text: #ffffff;
+        --dark-strip-muted: #888888;
+        --dark-strip-border: #1f1f1f;
+      }
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* 1. Sticky Navigation */
+    .header-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-hire {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      background-color: var(--text-main);
+      color: var(--bg-surface);
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: transform 0.15s ease, opacity 0.2s ease;
+    }
+
+    .btn-hire:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* 2. Hero Section */
+    .hero-section {
+      padding: 88px 0 80px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .badge-available {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--badge-green-bg);
+      color: var(--badge-green-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+      letter-spacing: 0.01em;
+    }
+
+    .dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--badge-green-dot);
+      display: inline-block;
+      box-shadow: 0 0 0 2px rgba(15, 122, 85, 0.2);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+      line-height: 1.15;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent-blue);
+    }
+
+    .hero-subtext {
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin-left: auto;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      aspect-ratio: 3 / 4;
+    }
+
+    .hero-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-image-frame:hover img {
+      transform: scale(1.02);
+    }
+
+    .hero-image-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 20px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--text-main);
+      color: var(--bg-surface);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outlined {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background-color: transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-outlined:hover {
+      border-color: var(--text-main);
+      background-color: var(--bg-card-subtle);
+      transform: translateY(-1px);
+    }
+
+    /* 3. Stats Strip */
+    .stats-strip {
+      background-color: var(--dark-strip-bg);
+      color: var(--dark-strip-text);
+      border-top: 1px solid var(--dark-strip-border);
+      border-bottom: 1px solid var(--dark-strip-border);
+      padding: 48px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-number {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--dark-strip-text);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--dark-strip-muted);
+      line-height: 1.4;
+    }
+
+    /* Common Section Styles */
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+    }
+
+    /* 4. Experience Section */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .experience-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .exp-main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-role {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .exp-company {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .exp-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .exp-dates {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-status.current {
+      background-color: var(--badge-green-bg);
+      color: var(--badge-green-text);
+    }
+
+    .badge-status.muted {
+      background-color: var(--badge-muted-bg);
+      color: var(--badge-muted-text);
+    }
+
+    /* 5. Projects Section */
+    .projects-section {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .project-top {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-card-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+
+    .project-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 11px;
+    }
+
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      margin-top: auto;
+    }
+
+    .project-link:hover {
+      color: var(--accent-blue-hover);
+      text-decoration: underline;
+    }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+
+    /* 6. Skills Section */
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background-color: var(--tag-hover-bg);
+      border-color: var(--tag-hover-border);
+      color: var(--accent-blue);
+    }
+
+    /* 7. Education Section */
+    .education-section {
+      border-top: 1px solid var(--border-color);
+    }
+
+    .education-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .edu-main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .edu-degree {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .edu-school {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .edu-dates {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .edu-aside {
+      flex-shrink: 0;
+    }
+
+    /* 8. Contact Section */
+    .contact-section {
+      background-color: var(--dark-strip-bg);
+      color: var(--dark-strip-text);
+      padding: 96px 0 88px;
+    }
+
+    .contact-header {
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--dark-strip-text);
+    }
+
+    .contact-subtext {
+      color: var(--dark-strip-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--dark-strip-border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-card:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--dark-strip-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark-strip-text);
+      word-break: break-all;
+    }
+
+    a.contact-card:hover .contact-value {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* 9. Footer */
+    .footer {
+      background-color: var(--dark-strip-bg);
+      border-top: 1px solid var(--dark-strip-border);
+      color: var(--dark-strip-muted);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-image-wrapper {
+        max-width: 320px;
+        margin-left: 0;
+      }
+    }
+
+    /* Responsive Design (Mobile Breakpoint at 640px) */
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .hero-image-wrapper {
+        max-width: 100%;
+      }
+
+      .experience-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .exp-aside {
+        align-items: flex-start;
+        margin-top: 4px;
+      }
+
+      .education-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section {
+        padding: 64px 0 56px;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- 1. Sticky Navigation -->
+  <header class="header-nav">
+    <div class="container nav-container">
+      <a href="#top" class="nav-logo">Ameer Hamza</a>
+      <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="mailto:hami9872@gmail.com" class="btn-hire">Hire me</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-text">
+            <div class="badge-available">
+              <span class="dot-pulse"></span>
+              Available for new projects
+            </div>
+            <h1 class="hero-headline">Building apps that <em>feel right</em> to use.</h1>
+            <p class="hero-subtext">
+              Senior Android developer with 6+ years crafting user-first mobile experiences — 40+ apps shipped with 10M+ downloads spanning edtech platforms, live streaming, enterprise education systems, and clean-energy apps across Pakistan and the Arab world.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">See my work</a>
+              <a href="mailto:hami9872@gmail.com" class="btn-outlined">Get in touch</a>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-image-frame">
+              <img src="assets/ameer-hamza.jpg" alt="Ameer Hamza — Senior Android Developer" loading="eager" width="400" height="533">
+            </div>
+            <div class="hero-image-badge">
+              <span>📍 Lahore, Pakistan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Stats Strip -->
+    <section class="stats-strip">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">6+</span>
+            <span class="stat-label">Years of Android development</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">40+</span>
+            <span class="stat-label">Apps shipped to production</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10M+</span>
+            <span class="stat-label">Downloads across all apps</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3.58</span>
+            <span class="stat-label">CGPA — Software Engineering</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Work Experience -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-eyebrow">Career</div>
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="exp-main">
+              <h3 class="exp-role">Sr. Mobile Application Developer</h3>
+              <p class="exp-company">ARVO</p>
+            </div>
+            <div class="exp-aside">
+              <span class="badge-status current">Current</span>
+              <span class="exp-dates">Oct 2025 – Present</span>
+            </div>
+          </div>
+          <div class="experience-card">
+            <div class="exp-main">
+              <h3 class="exp-role">Sr. Mobile Application Developer</h3>
+              <p class="exp-company">Tower Technologies (Pvt.) Ltd</p>
+            </div>
+            <div class="exp-aside">
+              <span class="badge-status muted">4 yrs 4 mos</span>
+              <span class="exp-dates">Jun 2021 – Oct 2025</span>
+            </div>
+          </div>
+          <div class="experience-card">
+            <div class="exp-main">
+              <h3 class="exp-role">Mobile Application Developer</h3>
+              <p class="exp-company">Curiologix Inc.</p>
+            </div>
+            <div class="exp-aside">
+              <span class="badge-status muted">1 yr 7 mos</span>
+              <span class="exp-dates">Dec 2019 – Jun 2021</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-eyebrow">Portfolio</div>
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="projects-grid">
+          <!-- 1. PGC eLearn -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/pgcelearn.png" alt="PGC eLearn Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">PGC eLearn</h3>
+              <p class="project-desc">Flagship digital learning platform for PGC students with video lectures, tests, and course materials.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=pgc.elarn.pgcelearn" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 2. Prep by PGC — Matric -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/prep.png" alt="Prep by PGC — Matric Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Prep by PGC — Matric</h3>
+              <p class="project-desc">Free Matric prep portal: video lectures, 1000+ long questions, 4000+ MCQs, past papers.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.pgc.prep" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 3. STEP Schools -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/stepschools.png" alt="STEP Schools Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">STEP Schools</h3>
+              <p class="project-desc">Comprehensive learning management and school portal for 21st-century STEAM curriculum and school community.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.step.schools" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 4. PGC Teacher Portal -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/teacherapp.png" alt="PGC Teacher Portal Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">PGC Teacher Portal</h3>
+              <p class="project-desc">Faculty management system for attendance, lectures, exam grading, and student evaluation across campuses.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=pgc.pgc.teacherapp" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 5. STEP by PGC -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/step.png" alt="STEP by PGC Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">STEP by PGC</h3>
+              <p class="project-desc">Entry test preparation app for intermediate students. MCQs, practice tests, study plans.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=edu.pgc.step.step" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 6. Explore by PGC -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/explore.png" alt="Explore by PGC Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Explore by PGC</h3>
+              <p class="project-desc">Digital eBook reader and content discovery platform for PGC students.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.pgc.ebook" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 7. Hadaf Colleges -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/hadaf.png" alt="Hadaf Colleges Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Hadaf Colleges</h3>
+              <p class="project-desc">Official mobile portal for Hadaf Group of Colleges students: academic schedules, notifications, and results.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.pgc.hadaf" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 8. NatGeo Al Arabiya -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/natgeo.png" alt="NatGeo Al Arabiya Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">NatGeo Al Arabiya</h3>
+              <p class="project-desc">National Geographic magazine app localized for Arabic-speaking audiences.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=ae.admedia.natgeo" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 9. Ayn TV -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/ayn.png" alt="Ayn TV Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Ayn TV</h3>
+              <p class="project-desc">Live radio & TV streaming app with downloads, picture-in-picture, AR, favourites, watch-later.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.om.ayn" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 10. Zero Carbon — ZC -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/zerocarbon.png" alt="Zero Carbon — ZC Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Zero Carbon — ZC</h3>
+              <p class="project-desc">Pakistan's first renewable energy company app for tracking low-carbon transition.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.ttl.zerocarbonzc" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+
+          <!-- 11. Imamia Jantri -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/icons/imamia.png" alt="Imamia Jantri Icon" loading="lazy" width="52" height="52">
+              </div>
+              <h3 class="project-title">Imamia Jantri</h3>
+              <p class="project-desc">Islamic lifestyle app: duas, prayer times, Namaz, Qibla, Islamic calendar, Quran articles.</p>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.iftikharbookdepot.imamia_jantri" target="_blank" rel="noopener" class="project-link">
+              Play Store
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-eyebrow">Expertise</div>
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-cloud">
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Android SDK</span>
+          <span class="skill-tag">XML Layouts</span>
+          <span class="skill-tag">MVVM Architecture</span>
+          <span class="skill-tag">Dagger Hilt</span>
+          <span class="skill-tag">Navigation Component</span>
+          <span class="skill-tag">REST Web APIs</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Third-party Libraries</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">Live Streaming</span>
+          <span class="skill-tag">Picture-in-Picture</span>
+          <span class="skill-tag">Play Store Publishing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Education Section -->
+    <section class="section education-section">
+      <div class="container">
+        <div class="section-eyebrow">Background</div>
+        <h2 class="section-title">Education</h2>
+        <div class="education-card">
+          <div class="edu-main">
+            <h3 class="edu-degree">🎓 Bachelor of Software Engineering</h3>
+            <p class="edu-school">International Islamic University Islamabad</p>
+            <p class="edu-dates">Jan 2014 – Jan 2018</p>
+          </div>
+          <div class="edu-aside">
+            <span class="badge-status current">CGPA 3.58</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-header">
+          <h2 class="contact-title">Let's build something.</h2>
+          <p class="contact-subtext">Open to freelance and contract work. Have an ambitious project in mind or an Android team to scale? Get in touch.</p>
+        </div>
+        <div class="contact-grid">
+          <a href="mailto:hami9872@gmail.com" class="contact-card">
+            <span class="contact-label">✉️ Email</span>
+            <span class="contact-value">hami9872@gmail.com</span>
+          </a>
+          <a href="tel:+923074793177" class="contact-card">
+            <span class="contact-label">📱 Phone / WhatsApp</span>
+            <span class="contact-value">+92 307 479 3177</span>
+          </a>
+          <div class="contact-card">
+            <span class="contact-label">📍 Location</span>
+            <span class="contact-value">Lahore, Pakistan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 Ameer Hamza — Android Developer · Lahore, Pakistan</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+</body>
+</html>
