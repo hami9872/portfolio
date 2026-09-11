@@ -11,6 +11,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+
   <style>
     :root {
       --bg-surface: #f7f6f3;
@@ -32,12 +41,38 @@
       --dark-strip-text: #ffffff;
       --dark-strip-muted: #999999;
       --dark-strip-border: #222222;
+      --toggle-border: #dcd9cf;
+      --toggle-bg: #eae7e0;
       --font-display: 'DM Serif Display', Georgia, serif;
       --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
+    [data-theme="dark"] {
+      --bg-surface: #121212;
+      --bg-card: #1c1c1c;
+      --bg-card-subtle: #242424;
+      --text-main: #f5f5f5;
+      --text-muted: #a3a3a3;
+      --border-color: #2e2e2e;
+      --accent-blue: #4d7dff;
+      --accent-blue-hover: #6e94ff;
+      --badge-green-bg: #12281e;
+      --badge-green-text: #34d399;
+      --badge-green-dot: #34d399;
+      --badge-muted-bg: #2a2a2a;
+      --badge-muted-text: #cccccc;
+      --tag-hover-bg: #1e2638;
+      --tag-hover-border: #4d7dff;
+      --dark-strip-bg: #0a0a0a;
+      --dark-strip-text: #ffffff;
+      --dark-strip-muted: #888888;
+      --dark-strip-border: #1f1f1f;
+      --toggle-border: #333333;
+      --toggle-bg: #222222;
+    }
+
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
         --bg-surface: #121212;
         --bg-card: #1c1c1c;
         --bg-card-subtle: #242424;
@@ -57,6 +92,8 @@
         --dark-strip-text: #ffffff;
         --dark-strip-muted: #888888;
         --dark-strip-border: #1f1f1f;
+        --toggle-border: #333333;
+        --toggle-bg: #222222;
       }
     }
 
@@ -136,6 +173,12 @@
       color: var(--text-main);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .btn-hire {
       display: inline-flex;
       align-items: center;
@@ -152,6 +195,62 @@
     .btn-hire:hover {
       opacity: 0.9;
       transform: translateY(-1px);
+    }
+
+    .theme-toggle {
+      background-color: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      font-size: 1.1rem;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .icon-sun {
+      display: none;
+    }
+
+    .icon-moon {
+      display: block;
+    }
+
+    [data-theme="dark"] .icon-sun {
+      display: block;
+    }
+
+    [data-theme="dark"] .icon-moon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .icon-sun {
+        display: block;
+      }
+      :root:not([data-theme="light"]) .icon-moon {
+        display: none;
+      }
     }
 
     /* 2. Hero Section */
@@ -744,7 +843,27 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="mailto:hami9872@gmail.com" class="btn-hire">Hire me</a>
+      <div class="nav-right">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle dark/light theme">
+          <!-- Sun icon (shown in dark mode to switch to light) -->
+          <svg class="icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon icon (shown in light mode to switch to dark) -->
+          <svg class="icon-moon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="mailto:hami9872@gmail.com" class="btn-hire">Hire me</a>
+      </div>
     </div>
   </header>
 
@@ -1130,6 +1249,38 @@
       <p>© 2024 Ameer Hamza — Android Developer · Lahore, Pakistan</p>
     </div>
   </footer>
+
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = getPreferredTheme();
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+      });
+    }
+
+    // Keep in sync if user changes OS color scheme and hasn't explicitly chosen a theme yet
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
 
 </body>
 </html>
